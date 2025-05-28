@@ -1,0 +1,38 @@
+﻿@model ClickEatApp.Core.DTOs.UserEditDto
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<div class="register-container">
+    <form asp-action="Edit" asp-controller="User" method="post">
+        <h2>Редакция</h2>
+
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <label asp-for="DateOfBirth"></label>
+        <input asp-for="DateOfBirth" type="date" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+
+        <label asp-for="Gender"></label>
+        <select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderEnum>()">
+            <option value="">Изберете пол</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+
+        <div class="form-buttons">
+            <a href="/Index">Back</a>
+            <button type="submit">Edit</button>
+        </div>
+    </form>
+</div>

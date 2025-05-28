@@ -1,0 +1,84 @@
+﻿@model OrderListResultDto
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<h2 class="users">Списък с поръчки</h2>
+
+<form method="get" class="search-form">
+    <input type="text" name="clientName" placeholder="Име на клиент..." value="@Context.Request.Query["clientName"]" />
+    <input type="date" name="orderDate" placeholder="Дата..." value="@Context.Request.Query["orderDate"]" />
+    <input type="number" name="minPrice" placeholder="Минимална цена" value="@Context.Request.Query["minPrice"]" />
+
+    <select name="sortBy">
+        <option value="id" selected>Сортирай по ID</option>
+        <option value="price">Сортирай по Цена</option>
+    </select>
+
+    <select name="sortDirection">
+        <option value="asc">Нарастващо</option>
+        <option value="desc">Намаляващо</option>
+    </select>
+
+    <button type="submit">Търси</button>
+</form>
+
+@if (Model.Items.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Адрес</th>
+                <th>Доставка</th>
+                <th>Дата</th>
+                <th>Цена</th>
+                <th>Храни</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Items)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Address</td>
+                    <td>@(order.Delivery ? "Да" : "Не")</td>
+                    <td>@order.OrderDate.ToString("dd.MM.yyyy")</td>
+                    <td>@order.TotalPrice лв.</td>
+                    <td>
+                        <ul>
+                            @foreach (var food in order.Foods)
+                            {
+                                <li>@food.Name (@food.Quantity бр.) - @food.PriceAtTime лв.</li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (Model.TotalCount > Model.PageSize)
+    {
+        <div class="pagination">
+            @for (int i = 1; i <= Math.Ceiling((double)Model.TotalCount / Model.PageSize); i++)
+            {
+                <a href="?page=@i
+                          &clientName=@Context.Request.Query["clientName"]
+                          &orderDate=@Context.Request.Query["orderDate"]
+                          &minPrice=@Context.Request.Query["minPrice"]
+                          &sortBy=@Context.Request.Query["sortBy"]
+                          &sortDirection=@Context.Request.Query["sortDirection"]"
+                   class="@(i == Model.Page ? "active" : "")">
+                    @i
+                </a>
+            }
+        </div>
+    }
+}
+else
+{
+    <h3>Няма намерени поръчки.</h3>
+}
+

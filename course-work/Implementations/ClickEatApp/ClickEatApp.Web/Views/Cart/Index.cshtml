@@ -1,0 +1,40 @@
+﻿@model List<CartItemDto>
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<h2 class="cart-title">Твоята количка</h2>
+
+@if (Model.Any())
+{
+    <ul class="cart-list">
+        @foreach (var item in Model)
+        {
+            <li class="cart-item">
+                <span class="item-info">@item.Name - @item.Price лв. Количество: @item.Quantity</span>
+                <form asp-action="RemoveFromCart" method="post" class="remove-form">
+                    <input type="hidden" name="foodId" value="@item.FoodId" />
+                    <button type="submit" class="remove-btn">Премахни</button>
+                </form>
+            </li>
+        }
+    </ul>
+
+    <form asp-action="PlaceOrder" asp-controller="Cart" method="post" class="order-form">
+        <label for="address">Адрес:</label>
+        <input type="text" name="address" id="address" class="form-input" required />
+
+        <label for="delivery">
+            Доставка:
+            <input type="checkbox" name="delivery" id="delivery" class="checkbox" />
+        </label>
+
+        <button type="submit" class="order-btn">Поръчай</button>
+        <a asp-action="SeeRestaurant" asp-controller="Restaurant" asp-route-id="@ViewBag.RestaurantId" class="continue-shopping-btn">⬅ Продължи да пазаруваш</a>
+    </form>
+}
+else
+{
+    <p class="empty-cart">Количката е празна.</p>
+}

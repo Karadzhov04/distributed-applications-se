@@ -1,0 +1,79 @@
+﻿@model RestaurantListResultDto
+
+@{
+this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<h2 class="users">Списък с ресторанти</h2>
+
+<form method="get" class="search-form">
+<input type="text" name="name" placeholder="Име на ресторант..." value="@Context.Request.Query["name"]" />
+<input type="text" name="ownerName" placeholder="Име на собственик..." value="@Context.Request.Query["ownerName"]" />
+
+<select name="sortBy">
+    <option value="id" selected>Сортирай по ID</option>
+    <option value="name">Сортирай по наименование</option>
+</select>
+
+<select name="sortDirection">
+    <option value="asc">Нарастващо</option>
+    <option value="desc">Намаляващо</option>
+</select>
+
+<button type="submit">Търси</button>
+</form>
+
+@if (Model.Items.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Име</th>
+                <th>Описание</th>
+                <th>Отворен ли е?</th>
+                <th>Собственик</th>
+                <th>Снимка</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var restaurant in Model.Items)
+            {
+                <tr>
+                    <td>@restaurant.Id</td>
+                    <td>@restaurant.Name</td>
+                    <td>@restaurant.Description</td>
+                    <td>@(restaurant.IsOpen ? "Да" : "Не")</td>
+                    <td>@restaurant.OwnerName</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(restaurant.ImageUrl))
+                        {
+                            <img src="@restaurant.ImageUrl" alt="Снимка" style="max-width: 100px;" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (Model.TotalCount > Model.PageSize)
+    {
+        <div class="pagination">
+            @for (int i = 1; i <= Math.Ceiling((double)Model.TotalCount / Model.PageSize); i++)
+            {
+                <a href="?page=@i
+                            &name=@Context.Request.Query["name"]
+                            &ownerName=@Context.Request.Query["ownerName"]
+                            &sortBy=@Context.Request.Query["sortBy"]
+                            &sortDirection=@Context.Request.Query["sortDirection"]"
+                    class="@(i == Model.Page ? "active" : "")">
+                    @i
+                </a>
+            }
+        </div>
+    }
+}
+else
+{
+<h3>Няма намерени ресторанти.</h3>
+}

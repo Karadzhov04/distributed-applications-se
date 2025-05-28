@@ -1,0 +1,39 @@
+﻿@model ClickEatApp.Core.DTOs.RegisterDto
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<div class="register-container">
+    <form asp-action="Register" asp-controller="Home" method="post">
+        <h2>Регистрация</h2>
+
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+        <label asp-for="Email"></label> 
+        <input asp-for="Email" type="email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <label asp-for="DateOfBirth"></label>
+        <input asp-for="DateOfBirth" type="date" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+
+        <label asp-for="Gender"></label>
+        <select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderEnum>()">
+            <option value="">Изберете пол</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+
+        <div class="form-buttons">
+            <a href="/Index">Назад</a>
+            <button type="submit">Създай</button>
+        </div>
+    </form>
+</div>
+

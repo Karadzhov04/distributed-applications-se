@@ -1,0 +1,43 @@
+﻿@model ClickEatApp.Web.ViewModel.Restaurant.RestaurantCreateVM
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<div class="register-container">
+    <form asp-action="Create" asp-controller="Restaurant" method="post" enctype="multipart/form-data">
+        <h2>Създаване на ресторант</h2>
+
+        <label asp-for="Restaurant.Name"></label>
+        <input asp-for="Restaurant.Name" />
+        <span asp-validation-for="Restaurant.Name" class="text-danger"></span>
+
+        <label asp-for="Restaurant.Description"></label>
+        <textarea asp-for="Restaurant.Description"></textarea>
+        <span asp-validation-for="Restaurant.Description" class="text-danger"></span>
+
+        <label asp-for="Restaurant.Image"></label>
+        <input asp-for="Restaurant.Image" type="file" />
+        <span asp-validation-for="Restaurant.Image" class="text-danger"></span>
+
+        <div class="checkbox">
+            <label asp-for="Restaurant.IsOpen">Отворен ли е?</label>
+            <input asp-for="Restaurant.IsOpen" type="checkbox" />
+            <span asp-validation-for="Restaurant.IsOpen" class="text-danger"></span>
+        </div>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <label asp-for="Restaurant.OwnerId">Собственик</label>
+            <select asp-for="Restaurant.OwnerId" asp-items="Model.Owners">
+                <option value="">-- Избери собственик --</option>
+            </select>
+            <span asp-validation-for="Restaurant.OwnerId" class="text-danger"></span>
+        }
+
+        <div class="form-buttons">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Назад</a>
+            <button type="submit" class="btn btn-primary">Създай</button>
+        </div>
+    </form>
+</div>

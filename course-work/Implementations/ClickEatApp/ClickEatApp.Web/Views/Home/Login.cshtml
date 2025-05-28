@@ -1,0 +1,33 @@
+﻿@model ClickEatApp.Core.DTOs.LoginDto
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<div class="register-container">
+    <form asp-action="Login" asp-controller="Home" method="post">
+        <h2>Вход</h2>
+
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <p>@error.ErrorMessage</p>
+                }
+            </div>
+        }
+
+        <div class="form-buttons">
+            <a href="/Index">Назад</a>
+            <button type="submit">Влез</button>
+        </div>
+    </form>
+</div>

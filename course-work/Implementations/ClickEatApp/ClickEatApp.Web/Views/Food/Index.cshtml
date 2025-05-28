@@ -1,0 +1,63 @@
+﻿@model FoodListResultDto
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<h2>Списък с храни</h2>
+
+<form method="get" class="search-form">
+    <input type="hidden" name="restaurantId" value="@Model.RestaurantId" />
+    <input type="text" name="name" placeholder="Име..." value="@Context.Request.Query["name"]" />
+    <input type="number" name="minCalories" placeholder="Минимални калории" value="@Context.Request.Query["minCalories"]" />
+    <select name="sortBy">
+        <option value="id">ID</option>
+        <option value="price">Цена</option>
+        <option value="calories">Калории</option>
+    </select>
+    <select name="sortDirection">
+        <option value="asc">Нарастващо</option>
+        <option value="desc">Намаляващо</option>
+    </select>
+    <button type="submit">Търси</button>
+</form>
+
+
+<table class="table">
+    <tr>
+        <th>Име</th>
+        <th>Цена</th>
+        <th>Калории</th>
+    </tr>
+    @foreach (var food in Model.Items)
+    {
+        <tr>
+            <td>@food.Name</td>
+            <td>@food.Price</td>
+            <td>@food.Calories</td>
+            <td>
+                @if (!string.IsNullOrEmpty(food.ImageUrl))
+                {
+                    <img src="@food.ImageUrl" alt="Снимка" style="max-width: 100px;" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+@if (Model.TotalCount > Model.PageSize)
+{
+    <div class="pagination">
+        @for (int i = 1; i <= Math.Ceiling((double)Model.TotalCount / Model.PageSize); i++)
+        {
+            <a href="?page=@i&restaurantId=@Model.RestaurantId&name=@Context.Request.Query["name"]&minCalories=@Context.Request.Query["minCalories"]&sortBy=@Context.Request.Query["sortBy"]&sortDirection=@Context.Request.Query["sortDirection"]"
+               class="@(i == Model.Page ? "active" : "")">
+                @i
+            </a>
+        }
+    </div>
+}
+else
+{
+    <h2>Няма такава храна</h2>
+}

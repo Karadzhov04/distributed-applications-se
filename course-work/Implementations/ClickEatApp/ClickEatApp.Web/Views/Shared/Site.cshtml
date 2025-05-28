@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Http
+@using System.Security.Claims
+
+<html>
+<head>
+	<title>MySite</title>
+	<link href="~/css/site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="hero-title-box">
+		<div>
+			<h1 class="title"><b>ClickEat – Вкусна храна. Само с един click.</b></h1>
+		</div>
+		<div>
+			@if (ViewContext.HttpContext.Session.GetString("JwtToken") != null)
+			{
+                <ul class="navbarIndex">
+                    <li class="item-bar"><a href="/Home/Index">Home</a></li>
+                    <li class="item-bar"><a href="/User/GoProfile">Your profile</a></li>
+                    <li class="item-bar"><a href="/Home/Logout">Logout</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="item-bar"><a asp-controller="Admin" asp-action="Index">Потребители</a></li>
+                    }
+                </ul>
+
+                @if (User.IsInRole("Restaurant") || User.IsInRole("Admin"))
+                {
+                    <div>
+                        <h2 class="CreateRestaurant"><a asp-controller="Restaurant" asp-action="Create">Създай ресторант</a></h2>
+                    </div>
+                }
+            }
+			else
+			{
+			<ul class="navbar">
+				<li class="item-bar"><a asp-controller="Home" asp-action="Login" class="btn-primary">Вход</a></li>
+				<li class="item-bar"><a asp-controller="Home" asp-action="Register" class="btn-primary">Регистрирай се</a></li>
+			</ul>
+			}
+		</div>
+	</div>
+    @RenderBody()
+    @if (ViewContext.HttpContext.Session.GetString("JwtToken") == null)
+    {
+        <div class="categories">
+            <h2>Популярни категории</h2>
+            <div class="category-list">
+                <div class="category-item">🍕 Пица</div>
+                <div class="category-item">🍔 Бургери</div>
+                <div class="category-item">🥗 Здравословно</div>
+                <div class="category-item">🍣 Суши</div>
+            </div>
+        </div>
+    }
+</body>
+</html>

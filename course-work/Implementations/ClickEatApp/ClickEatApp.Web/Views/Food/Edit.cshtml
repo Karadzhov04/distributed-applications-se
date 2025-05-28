@@ -1,0 +1,38 @@
+﻿@model ClickEatApp.Core.DTOs.FoodEditDto
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<div class="register-container">
+    <form asp-action="Edit" asp-controller="Food" method="post" enctype="multipart/form-data">
+        <h2>Редактиране на храна</h2>
+
+        <input type="hidden" asp-for="RestaurantId" />
+        <input type="hidden" asp-for="Id" />
+
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        <label asp-for="Price"></label>
+        <input asp-for="Price" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+
+        <label asp-for="Calories"></label>
+        <input asp-for="Calories" />
+        <span asp-validation-for="Calories" class="text-danger"></span>
+
+        <label asp-for="ImageFile">Нова снимка (по желание):</label>
+        <input asp-for="ImageFile" type="file" />
+
+        <div class="form-buttons">
+            <a asp-action="SeeRestaurant" asp-controller="Restaurant" asp-route-id="@Model.RestaurantId" class="btn btn-secondary">Back</a>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+    </form>
+</div>

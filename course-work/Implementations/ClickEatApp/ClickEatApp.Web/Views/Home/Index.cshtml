@@ -1,0 +1,52 @@
+﻿@model List<ClickEatApp.Core.DTOs.RestaurantViewDto>
+@using ClickEatApp.Core.Enums 
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+ @if (Model.Any())
+ {
+     <div class="grid">
+         @foreach (var restaurant in Model)
+         {
+             <div class="container3">
+                 <div class="header">
+                     @if (!string.IsNullOrEmpty(restaurant.ImageUrl))
+                     {
+                         <div>
+                            <img src="@restaurant.ImageUrl" alt="Restaurant Image" style="max-width: 300px; height: auto;" />
+                         </div>
+                     }
+                     else
+                     {
+                         <p>No image available</p>
+                     }
+                 </div>
+                 <div class="content">
+                     <h2 class="RestaurantName">@restaurant.Name</h2>
+                    <a href="/Restaurant/SeeRestaurant?id=@restaurant.Id" class="btnSee">See more</a>
+                 </div>
+                 <div class="footer">
+                        @if (restaurant.IsOpen)
+                        {
+                            <h3>OPEN</h3>
+                        }
+                        else
+                        {
+                            <h3>CLOSED</h3>
+                        }
+                </div>
+             </div>
+         }
+     </div>
+ }
+ else
+ {
+     <div class="noAds">
+         <div>NO RESTAURANTS YET</div>
+     </div>
+ }
+<footer class="to-the-top">
+    <a href="#top"> To the top </a>
+</footer>

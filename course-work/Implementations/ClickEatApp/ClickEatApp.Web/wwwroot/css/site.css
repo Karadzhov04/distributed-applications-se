@@ -1,0 +1,781 @@
+body {
+    background-image: url('/images/BackgroundImage/image-background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: yellow;
+    padding: 20px;
+    margin-top: 250px;
+}
+
+.title {
+    text-align: center;
+}
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #ff4c4c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #e53e3e;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.btn-secondary:hover {
+    background-color: #f0f0f0;
+}
+
+.categories {
+    padding: 50px;
+    text-align: center;
+}
+
+.category-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.category-item {
+    background-color: #fafafa;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 1.2rem;
+}
+
+.register-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-container label {
+    margin-top: 10px;
+}
+
+.register-container input,
+.register-container select {
+    padding: 8px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.form-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-danger {
+    color: red;
+    font-size: 14px;
+}
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    padding: 2px;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.navbarIndex {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    background-color: dodgerblue;
+    text-align: center;
+    padding: 2px;
+    font-size: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-bar {
+    display: inline-block;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.hero-title-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачен фон */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 96px;
+}
+
+.noAds {
+    text-align: center;
+    margin-top: 50px
+}
+
+.container3 {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    grid-template-columns: 1fr;
+    gap: 5px;
+    background-color: #2196F3;
+    padding: 15px;
+    height: -webkit-fill-available;
+    font-size: large;
+}
+
+.container3 > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+}
+
+.container3 > div.header {
+    grid-area: header;
+    display: grid;
+    justify-content: center;
+}
+
+
+.container3 > div.content {
+    grid-area: content;
+}
+
+.container3 > div.footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnSee {
+    padding: 1px 6px;
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    color: buttontext;
+    background-color: #89CFF0;
+    text-decoration: none;
+}
+
+.btnSee :hover {
+    color: white;
+}
+
+.CarName {
+    text-align: center;
+}
+
+.CreateRestaurant {
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+}
+
+.table th,
+.table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.form-control {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary2 {
+    background-color: #4CAF50;
+    border: none;
+    padding: 8px 14px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary2:hover {
+    background-color: #45a049;
+}
+
+.users {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ff0000;
+    text-align: center;
+}
+
+.to-the-top {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    padding: 16px;
+    text-decoration: none;
+    color: orange;
+    border: 1px solid blue;
+    border-radius: 30px;
+    background-color: aliceblue;
+}
+
+/*body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: url('/images/bg-food.jpg') no-repeat center center fixed;
+    background-size: cover;
+}*/
+
+.restaurant-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.restaurant-header {
+    text-align: center;
+}
+
+.restaurant-logo {
+    max-height: 120px;
+    margin-bottom: 1rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+.status.open {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status.closed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.description {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/*.food-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.food-card {
+    background: #fff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.food-card h3 {
+    margin: 0 0 0.5rem 0;
+}
+
+.food-card .price {
+    font-weight: bold;
+    color: #28a745;
+}
+*/
+
+.no-food {
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+.admin-buttons {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+background-color: #007bff;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #a71d2a;
+}
+
+.btn-add {
+background-color: #28a745;
+}
+
+.btn-add:hover {
+    background-color: #1e7e34;
+}
+
+.food-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.food-card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    width: 250px;
+}
+
+.food-card:hover {
+    transform: scale(1.03);
+}
+
+.food-img {
+    /*width: 100%;*/
+    height: 180px;
+    object-fit: cover;
+}
+
+.food-info {
+    padding: 1rem;
+}
+
+.food-info h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.descriptionF {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.calories {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #27ae60;
+}
+
+.container2 {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "menu content"
+        "footer footer";
+    grid-template-columns: 1fr 2fr;
+    gap: 5px;
+    background-color: #000000;
+    padding: 15px;
+    height: -webkit-fill-available;
+    font-size: large;
+}
+
+.container2 > div {
+background-color: rgba(255, 255, 255, 0.8);
+padding: 10px;
+}
+
+.container2 > div.header {
+    grid-area: header;
+    display: grid;
+    justify-content: center;
+}
+
+.container2 > div.menu2 {
+    grid-area: menu;
+}
+
+.container2 > div.content {
+    grid-area: content;
+}
+
+.container2 > div.footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonsProfile {
+    text-align: end;
+    display: flex;
+}
+
+.cart-title {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Списък с артикули */
+.cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.cart-item {
+    background: #fff;
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-info {
+    font-size: 16px;
+}
+
+/* Форма за премахване */
+.remove-form {
+    margin: 0;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Форма за поръчка */
+.order-form {
+    background: #fff;
+    padding: 20px;
+    margin: 30px auto 0;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.checkbox {
+    margin-left: 10px;
+    transform: scale(1.2);
+}
+
+.order-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-btn:hover {
+    background-color: #1e8449;
+}
+
+/* Празна количка */
+.empty-cart {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    margin-top: 40px;
+}
+
+.continue-shopping-btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 20px auto 0;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.continue-shopping-btn:hover {
+    background-color: #2980b9;
+}
+
+.thank-you-page {
+    max-width: 600px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 40px;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.thank-you-page h2 {
+    color: #2ecc71;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.thank-you-page p {
+    font-size: 18px;
+    color: #555;
+}
+
+.continue-shopping-btn {
+    display: inline-block;
+    margin-top: 30px;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.continue-shopping-btn:hover {
+    background-color: #2980b9;
+}
+
+form.search-form {
+margin-bottom: 20px;
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+}
+
+form.search-form input,
+form.search-form select,
+form.search-form button {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form.search-form button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form.search-form button:hover {
+    background-color: #0056b3;
+}
+
+table.tableF {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 20px;
+}
+
+table.tableF th,
+table.tableF td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table.tableF th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.pagination {
+display: flex;
+gap: 5px;
+justify-content: center;
+margin-bottom: 30px;
+}
+
+.pagination a {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.pagination a:hover {
+    background-color: #f2f2f2;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.resources-container {
+    padding: 20px;
+    max-width: 500px;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.titleR {
+    font-size: 24px;
+    color: #b30000;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #b30000;
+    padding-bottom: 5px;
+}
+
+.resource-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.resource-item span {
+    font-size: 18px;
+    color: #333;
+}
+
+.btnR {
+background-color: #007acc;
+color: white;
+padding: 8px 14px;
+text-decoration: none;
+border-radius: 6px;
+transition: background-color 0.3s ease;
+font-size: 14px;
+}
+
+.btnR:hover {
+    background-color: #005fa3;
+}
+
+.checkbox {
+    display: inline-block;
+    padding-left: 23px;
+}

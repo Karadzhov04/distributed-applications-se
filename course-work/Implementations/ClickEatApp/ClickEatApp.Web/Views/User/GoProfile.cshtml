@@ -1,0 +1,65 @@
+﻿@model ClickEatApp.Web.ViewModel.User.UserProfileVM
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<div class="container2">
+    <div class="header">
+        <h2>Your Profile</h2>
+    </div>
+    <div class="menu2">
+        <h1>Your Information</h1>
+
+        <h3>Name:</h3>
+        <p>@Model.User.Name</p>
+
+        <h3>Email:</h3>
+        <p>@Model.User.Email</p>
+
+        <h3>Date of Birth:</h3>
+        <p>@Model.User.DateOfBirth.ToShortDateString()</p>
+
+        <h3>Gender:</h3>
+        <p>@Model.User.Gender</p>
+
+        <div class="buttonsProfile">
+            <a asp-controller="User" asp-action="Edit" asp-route-id="@Model.User.Id" class="btn btn-edit">Edit</a><br>
+            <form asp-controller="User"
+                  asp-action="Delete"
+                  asp-route-id="@Model.User.Id"
+                  method="post"
+                  onsubmit="return confirm('Сигурен ли си, че искаш да изтриеш този потребител?');"
+                  style="display:inline;">
+                <button type="submit" class="btn btn-delete">Изтрий</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Your Orders</h2>
+        @if (Model.Orders.Any())
+        {
+            <ul class="order-list">
+                @foreach (var order in Model.Orders)
+                {
+                    <li class="order-item">
+                        <strong>Order #@order.Id</strong> <br />
+                        Date: @order.OrderDate.ToShortDateString() <br />
+                        Address: @order.Address <br />
+                        Total: <strong>@order.TotalPrice лв.</strong> <br />
+                        <ul>
+                            @foreach (var food in order.Foods)
+                            {
+                                <li>@food.Name x @food.Quantity (@food.PriceAtTime лв. /бр)</li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>You have no orders.</p>
+        }
+    </div>
+</div>

@@ -1,0 +1,112 @@
+﻿@model UserListResultDto
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<div class="resources-container">
+    <h2 class="titleR">ДРУГИ РЕСУРСИ</h2>
+    <div class="resource-item">
+        <span>Ресторанти</span>
+        <a asp-action="GetAllRestaurants" asp-controller="Admin" class="btnR">Виж всички ресторанти</a>
+    </div>
+    <div class="resource-item">
+        <span>Поръчки</span>
+        <a asp-action="GetAllOrders" asp-controller="Admin" class="btnR">Виж всички поръчки</a>
+    </div>
+</div>
+
+<h4 class="users"><b>Управление на потребители</b></h4>
+
+<form method="get" class="search-form">
+    <input type="text" name="name" placeholder="Име на потребител..." value="@Context.Request.Query["name"]" />
+    <input type="text" name="email" placeholder="Имейл..." value="@Context.Request.Query["email"]" />
+
+    <select name="sortBy">
+        <option value="id" selected>Сортирай по ID</option>
+        <option value="name">Сортирай по Име</option>
+        <option value="email">Сортирай по Имейл</option>
+    </select>
+
+    <select name="sortDirection">
+        <option value="asc">Нарастващо</option>
+        <option value="desc">Намаляващо</option>
+    </select>
+
+    <button type="submit">Търси</button>
+</form>
+
+@if (Model.Items.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Име</th>
+                <th>Имейл</th>
+                <th>Роля</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Items)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <form method="post" action="@Url.Action("UpdateRole", "Admin")">
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            <select name="newRole" class="form-control">
+                                @foreach (var role in Enum.GetValues(typeof(RoleEnum)).Cast<RoleEnum>())
+                                {
+                                    if (role == user.Role)
+                                    {
+                                        <option value="@role" selected>@role</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@role">@role</option>
+                                    }
+                                }
+                            </select>
+                            <button type="submit" class="btn btn-primary2">Запази</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post"
+                              asp-controller="User"
+                              asp-action="Delete"
+                              asp-route-id="@user.Id"
+                              onsubmit="return confirm('Сигурен ли си, че искаш да изтриеш този потребител?')">
+                            <button type="submit" class="btn btn-delete">Изтрий</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (Model.TotalCount > Model.PageSize)
+    {
+        <div class="pagination">
+            @for (int i = 1; i <= Math.Ceiling((double)Model.TotalCount / Model.PageSize); i++)
+            {
+                <a href="?page=@i
+                          &name=@Context.Request.Query["name"]
+                          &email=@Context.Request.Query["email"]
+                          &sortBy=@Context.Request.Query["sortBy"]
+                          &sortDirection=@Context.Request.Query["sortDirection"]"
+                   class="@(i == Model.Page ? "active" : "")">
+                    @i
+                </a>
+            }
+        </div>
+    }
+}
+else
+{
+    <h3>Няма намерени потребители.</h3>
+}
+
+
+

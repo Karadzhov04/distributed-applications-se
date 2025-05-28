@@ -1,0 +1,38 @@
+﻿@model ClickEatApp.Core.DTOs.FoodCreateDto
+
+@{
+    this.Layout = "/Views/Shared/Site.cshtml";
+}
+
+<div class="register-container">
+    <form asp-action="Create" asp-controller="Food" method="post" enctype="multipart/form-data">
+        <h2>Създаване на храна</h2>
+
+        <input type="hidden" asp-for="RestaurantId" />
+
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        <label asp-for="Price"></label>
+        <input asp-for="Price" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+
+        <label asp-for="Calories"></label>
+        <input asp-for="Calories" />
+        <span asp-validation-for="Calories" class="text-danger"></span>
+
+        <label asp-for="ImageFile"></label>
+        <input asp-for="ImageFile" type="file" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+
+        <div class="form-buttons">
+            <a asp-action="SeeRestaurant" asp-controller="Restaurant" class="btn btn-secondary">Back</a>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</div> 
